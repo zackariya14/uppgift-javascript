@@ -26,15 +26,11 @@ function fetchProducts() {
 
 const product = {fetchProducts};
 
-// Hämta den befintliga varukorgen från localStorage eller skapa en ny om den inte finns
 const cart = JSON.parse(localStorage.getItem("addToCart")) || [];
 
-// Lägg till produkten i varukorgen
 cart.push(product);
 
-// Spara den uppdaterade varukorgen i localStorage
 localStorage.setItem("addToCart", JSON.stringify(cart));
-console.log(cart)
 
 function createProductDiv(product) {
   const productDiv = document.createElement("div");
@@ -71,7 +67,7 @@ function createProductDiv(product) {
         <span class="close">&times;&nbsp;&nbsp;&nbsp;&nbsp;</span>
         <div class="modal-content">
           <img id="img01" style="max-width:100%">
-          <h4 style="color: white;" >${product.description}</h4>
+          <h4 id="heading01" style="color: white;">${product.description}</h4>
         </div>
       </div>
           
@@ -165,6 +161,9 @@ const resetButton = document.getElementById("reset-button");
 
 function onClick(element) {
   document.getElementById("img01").src = element.src;
+  const currentText = element.nextElementSibling.querySelector("h4").textContent
+  document.getElementById("heading01").textContent = currentText;
+  
   document.getElementById("modal01").style.display = "block";
 }
 
