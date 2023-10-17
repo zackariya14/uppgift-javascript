@@ -479,4 +479,5 @@ input[type=checkbox] {
   color: black;
   position: fixed;
   font-family: fantasy;
+  bottom: 0;
 }
